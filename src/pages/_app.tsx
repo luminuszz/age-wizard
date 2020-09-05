@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
 import { AppProps } from 'next/app';
-import Head from 'next/head';
 import React from 'react';
+import '../styles/home.scss';
 
 const CustomApp: NextPage<AppProps> = ({ Component, pageProps }) => {
   return (
