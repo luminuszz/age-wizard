@@ -18,7 +18,7 @@ interface InputFileProps {
 type InputProps = JSX.IntrinsicElements['input'] & InputFileProps;
 
 export interface ImperativeProps {
-  previewImg: string;
+  getPreviewImage: string;
 }
 
 const InputFile: React.ForwardRefRenderFunction<ImperativeProps, InputProps> = (
@@ -39,10 +39,12 @@ const InputFile: React.ForwardRefRenderFunction<ImperativeProps, InputProps> = (
     const previewImgUrl = URL.createObjectURL(currentFile);
 
     setPreviewImg(previewImgUrl);
+
+    console.log(previewImgUrl);
   }, []);
 
   useImperativeHandle(ref, () => ({
-    previewImg,
+    getPreviewImage: previewImg,
   }));
 
   useEffect(() => {
@@ -61,7 +63,7 @@ const InputFile: React.ForwardRefRenderFunction<ImperativeProps, InputProps> = (
 
   return (
     <>
-      {previewImg && <img src={previewImg} alt="Preview" width="100" />}
+      <img src={previewImg} alt="" />
       <input
         type="file"
         onChange={handlePreview}
